@@ -164,7 +164,7 @@ module simple_spi_master (
     output [31:0] reg_dat_do,
     output	  reg_dat_wait,
     output	  irq_out,
-    output	  err_out,
+    output reg err_out,
 
     output	 hk_connect,	// Connect to housekeeping SPI
     output	 spi_enabled,	// Used to mux pins with GPIO
@@ -184,7 +184,7 @@ module simple_spi_master (
     reg 	  isdo, hsck, icsb;
     reg [1:0] state;
     reg 	  isck;
-    reg	  err_out;
+    // reg	  err_out;
  
     reg [7:0]  treg, rreg, d_latched;
     reg [2:0]  nbit;
@@ -200,13 +200,13 @@ module simple_spi_master (
     reg	   enable;
     reg	   hkconn;
  
-    wire	  csb;
-    wire	  irq_out;
-    wire	  sck;
-    wire	  sdo;
-    wire	  sdoenb;
-    wire	  hk_connect;
-    wire	  spi_enabled;
+    // wire	  csb;
+    // wire	  irq_out;
+    // wire	  sck;
+    // wire	  sdo;
+    // wire	  sdoenb;
+    // wire	  hk_connect;
+    // wire	  spi_enabled;
 
     // Define behavior for inverted SCK and inverted CSB
     assign    	  csb = (invcsb) ? ~icsb : icsb;

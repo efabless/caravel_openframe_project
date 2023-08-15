@@ -113,25 +113,25 @@ module counter_timer_low (
 
     input	  stop_in,
     input	  enable_in,
-    output	  strobe,
+    output reg strobe,
     output	  enable_out,
-    output	  stop_out,
+    output reg stop_out,
     output	  is_offset,
-    output	  irq_out
+    output reg irq_out
 );
 
 reg [31:0] value_cur;
 reg [31:0] value_reset;
-reg	   irq_out;
-wire	   stop_in;		// High 32 bits counter has stopped
-reg	   strobe;		// Strobe to high 32 bits counter; occurs
+// reg	   irq_out;
+// wire	   stop_in;		// High 32 bits counter has stopped
+// reg	   strobe;		// Strobe to high 32 bits counter; occurs
 				// one cycle before actual timeout and
 				// irq signal.
-reg	   stop_out;		// Stop condition flag
+// reg	   stop_out;		// Stop condition flag
 
 wire [31:0] value_cur_plus;	// Next value, on up-count
 wire [31:0] value_cur_minus;	// Next value, on down-count
-wire	    is_offset;
+// wire	    is_offset;
 wire	    loc_enable;
 
 reg enable;	// Enable (start) the counter/timer

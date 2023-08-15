@@ -81,7 +81,7 @@ module spimemio_wb (
     wire spimemio_cfgreg_sel;
     wire valid;
     wire resetn;
-    wire quad_mode;
+    // wire quad_mode;
 
     assign resetn = ~wb_rst_i;
     assign valid = wb_cyc_i && wb_flash_stb_i;    
@@ -202,7 +202,7 @@ module spimemio (
     wire       dout_valid;
     wire [7:0] dout_data;
     wire [3:0] dout_tag;
-    wire       quad_mode;
+    // wire       quad_mode;
 
     reg [23:0] buffer;
 
@@ -298,11 +298,11 @@ module spimemio (
         xfer_io3_90 <= xfer_io3_do;
     end
 
-    wire pass_thru;
-    wire pass_thru_csb;
-    wire pass_thru_sck;
-    wire pass_thru_sdi;
-    wire pass_thru_sdo;
+    // wire pass_thru;
+    // wire pass_thru_csb;
+    // wire pass_thru_sck;
+    // wire pass_thru_sdi;
+    // wire pass_thru_sdo;
 
     assign quad_mode = config_qspi;
 
