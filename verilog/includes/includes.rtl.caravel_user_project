@@ -1,4 +1,6 @@
 # Caravel user project includes
+-v $(CARAVEL_PATH)/rtl/defines.v
+-v $(USER_PROJECT_VERILOG)/rtl/user_defines.v	     
 -v $(USER_PROJECT_VERILOG)/dv/firmware/spiflash.v
 -v $(USER_PROJECT_VERILOG)/rtl/openframe_project_wrapper.v	     
 -v $(USER_PROJECT_VERILOG)/rtl/picosoc.v
@@ -20,5 +22,28 @@
 -v $(USER_PROJECT_VERILOG)/rtl/gpio_wb.v
 -v $(USER_PROJECT_VERILOG)/rtl/gpio_vector_wb.v
 -v $(USER_PROJECT_VERILOG)/rtl/debug_regs.v
+-v $(USER_PROJECT_VERILOG)/rtl/vccd1_connection.v
+-v $(USER_PROJECT_VERILOG)/rtl/vssd1_connection.v
+#-v $(USER_PROJECT_VERILOG)/dv/firmware/sky130_sram_2kbyte_1rw1r_32x512_8.v
+#-v $(USER_PROJECT_VERILOG)/../openlane/picosoc/sky130_sram_2kbyte_1rw1r_32x512_8.v
+
+# caravel_files 
+-v $(CARAVEL_PATH)/rtl/user_id_programming.v
+-v $(CARAVEL_PATH)/rtl/constant_block.v
+-v $(CARAVEL_PATH)/rtl/xres_buf.v
+-v $(CARAVEL_PATH)/rtl/simple_por.v
+-v $(CARAVEL_PATH)/rtl/pads.v
+-v $(CARAVEL_PATH)/rtl/chip_io_openframe.v
+-v $(CARAVEL_PATH)/rtl/caravel_openframe.v
+
+#PDK cells
+-v $(PDK_ROOT)/$(PDK)/libs.ref/sky130_fd_io/verilog/sky130_fd_io.v
+-v $(PDK_ROOT)/$(PDK)/libs.ref/sky130_fd_io/verilog/sky130_ef_io.v
+-v $(PDK_ROOT)/$(PDK)/libs.ref/sky130_fd_sc_hd/verilog/primitives.v
+-v $(PDK_ROOT)/$(PDK)/libs.ref/sky130_fd_sc_hd/verilog/sky130_fd_sc_hd.v
+-v $(PDK_ROOT)/$(PDK)/libs.ref/sky130_fd_sc_hvl/verilog/primitives.v
+-v $(PDK_ROOT)/$(PDK)/libs.ref/sky130_fd_sc_hvl/verilog/sky130_fd_sc_hvl.v
+
+-v $(PDK_ROOT)/$(PDK)/libs.ref/sky130_sram_macros/verilog/sky130_sram_2kbyte_1rw1r_32x512_8.v
 
  

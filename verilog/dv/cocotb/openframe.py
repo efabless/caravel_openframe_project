@@ -1,16 +1,17 @@
 import cocotb
-import re
-from cocotb.clock import Clock
-from cocotb.triggers import ClockCycles, Edge
-from cocotb_includes import UART
-from cocotb_includes import SPI
+from cocotb.triggers import Edge
+from caravel_cocotb.caravel_interfaces import UART
+from caravel_cocotb.caravel_interfaces import SPI
+from models.cpu_model.cpu_model import CPU_Model
 
 class OpenFrame:
     def __init__(self, caravelEnv):
         self.caravelEnv = caravelEnv
-        debug_hdl = caravelEnv.dut.uut.user_project.openframe_example.debug_regs
+        openframe_example_hdl = caravelEnv.dut.uut.user_project.openframe_example
+        debug_hdl = openframe_example_hdl.debug_regs
         self.debug_reg1_hdl = debug_hdl.debug_reg_1
         self.debug_reg2_hdl = debug_hdl.debug_reg_2
+        CPU_Model(openframe_example_hdl)
 
     async def wait_reg1(self, data):
         while True:
@@ -56,7 +57,6 @@ class OpenFrame:
 
 
 class OpenFrameUART(UART):
-    
     def __init__(self, openFrame: OpenFrame,clk_div=1, uart_pins={"tx": 6, "rx": 5}) -> None:
         super().__init__(openFrame.caravelEnv,uart_pins=uart_pins)
         self.openFrame = openFrame
