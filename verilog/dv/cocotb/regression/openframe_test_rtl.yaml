@@ -13,4 +13,9 @@ Tests:
     - {name: hk_reset_val, sim: RTL}
     - {name: hk_wr_regs, sim: RTL}
     - {name: cpu_reset, sim: RTL}
-    - {name: spi_irq, sim: RTL}
+    - {name: hk_spi_irq, sim: RTL}
+    - {name: external1_irq, sim: RTL}
+    - {name: external2_irq, sim: RTL}
+    - {name: spi_master_irq, sim: RTL}
+    - {name: timer0_irq, sim: RTL}
+    - {name: timer1_irq, sim: RTL}

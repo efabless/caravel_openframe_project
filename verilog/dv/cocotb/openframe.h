@@ -252,6 +252,14 @@ void timer0_enable(bool is_enable){
         reg_timer0_config &= 0xFFFFFFFE;
     }
 }
+
+void timer0_irq_enable(bool is_enable){
+    if (is_enable){
+        reg_timer0_config |= 0x10;
+    }else{
+        reg_timer0_config &= 0xFFFFFFEF;
+    }
+}
 void timer0_oneshot(bool is_oneshot){
     if (is_oneshot){
         reg_timer0_config |= 0x2;
@@ -289,12 +297,12 @@ void timer0_oneshot_config(bool is_upcount, int data){
     timer0_enable(0);
     timer0_oneshot(1);
     timer0_upcount(is_upcount);
-    timer0_enable(1);
     if (is_upcount){
         timer0_periodic_val(data);
     }else{
         timer0_data(data);
     }
+    timer0_enable(1);
 }
 void timer0_periodic_config(bool is_upcount, int data){
     timer0_enable(0);
@@ -312,6 +320,15 @@ void timer1_enable(bool is_enable){
         reg_timer1_config &= 0xFFFFFFFE;
     }
 }
+
+void timer1_irq_enable(bool is_enable){
+    if (is_enable){
+        reg_timer1_config |= 0x10;
+    }else{
+        reg_timer1_config &= 0xFFFFFFEF;
+    }
+}
+
 void timer1_oneshot(bool is_oneshot){
     if (is_oneshot){
         reg_timer1_config |= 0x2;
@@ -333,17 +350,19 @@ void timer1_data(int data){
 int timer1_get_val(){
     return reg_timer1_value;
 }
-
+void timer1_periodic_val(int data){
+    reg_timer1_value = data;
+}
 void timer1_oneshot_config(bool is_upcount, int data){
     timer1_enable(0);
     timer1_oneshot(1);
     timer1_upcount(is_upcount);
-    timer1_enable(1);
     if (is_upcount){
-        timer0_periodic_val(data);
+        timer1_periodic_val(data);
     }else{
-        timer0_data(data);
+        timer1_data(data);
     }
+    timer1_enable(1);
 }
 void timer1_periodic_config(bool is_upcount, int data){
     timer1_enable(0);
@@ -363,9 +382,9 @@ void timer1_chain(bool is_chained){
 // spi master 
 void spi_enable(bool is_enable){
     if (is_enable){
-        reg_spimaster_config |= 0x2000; //bit 1
+        reg_spimaster_config |= 0x2000; //bit 13
     }else{
-        reg_spimaster_config &=  0xFFFFDFFF; //bit 1
+        reg_spimaster_config &=  0xFFFFDFFF; //bit 13
     }    
 }
 
@@ -411,6 +430,15 @@ void spi_mode(bool is_mode){
     }
     else{
         reg_spimaster_config &= 0xFFFFFFBF;
+    }
+}
+
+void spi_irq_enable(bool is_enable){
+    if (is_enable){
+        reg_spimaster_config |= 0x4000;
+    }
+    else{
+        reg_spimaster_config &= 0xFFFFBFFF;
     }
 }
 
