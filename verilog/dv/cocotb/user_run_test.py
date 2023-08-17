@@ -9,15 +9,17 @@ class UserRunTest(RunTest):
         # paths that need to be changed
         FIRMWARE_PATH = f"{self.paths.USER_PROJECT_ROOT}/verilog/dv/firmware"
         self.test.linker_script_file = f"{FIRMWARE_PATH}/sections.lds"
+        GCC_PATH = "/foss/tools/riscv-gnu-toolchain-rv32i/217e7f3debe424d61374d31e33a091a630535937/bin/"
         GCC_PATH = "/opt/riscv/bin/"
         GCC_PREFIX = "riscv32-unknown-linux-gnu"
         GCC_COMPILE = f"{GCC_PATH}/{GCC_PREFIX}"
-        SOURCE_FILES = f"{FIRMWARE_PATH}/start.s"
+        SOURCE_FILES = f"{FIRMWARE_PATH}/custom_ops.S {FIRMWARE_PATH}/start.S {FIRMWARE_PATH}/irq.c "
         LINKER_SCRIPT = f"-Wl,-Bstatic,-T,{self.test.linker_script_file},--strip-debug "
         CPUFLAGS = "-g -march=rv32imc -mabi=ilp32 -ffreestanding -nostdlib"
         includes = f" -I{FIRMWARE_PATH} -I{self.paths.USER_PROJECT_ROOT}/verilog/dv/cocotb "
+        macros = "-DUSE_IRQ_FUNCTION -Os" if "irq" in self.test.name else ""  # TODO: for future fix -Os is used here because of the without it the irq function write to illegal memory and with it the uart test fails
         elf_command = (
-            f"{GCC_COMPILE}-gcc  {includes} {CPUFLAGS} {LINKER_SCRIPT}"
+            f"{GCC_COMPILE}-gcc  {macros} {includes} {CPUFLAGS} {LINKER_SCRIPT}"
             f" -o {self.hex_dir}/{self.test.name}.elf {SOURCE_FILES} {self.c_file}"
         )
         lst_command = f"{GCC_COMPILE}-objdump -d -S {self.hex_dir}/{self.test.name}.elf > {self.hex_dir}/{self.test.name}.lst "

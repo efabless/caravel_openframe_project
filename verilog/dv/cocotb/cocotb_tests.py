@@ -14,3 +14,4 @@ from all_tests.spi_master.spi_master import spi_master
 from all_tests.housekeeping.hk_reset_val.hk_reset_val import hk_reset_val
 from all_tests.housekeeping.hk_wr_regs.hk_wr_regs import hk_wr_regs
 from all_tests.housekeeping.cpu_reset.cpu_reset import cpu_reset
+from all_tests.irq.spi_irq.spi_irq import spi_irq

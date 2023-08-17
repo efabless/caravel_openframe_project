@@ -1,3 +1,6 @@
+#ifndef OPENFRAME_H
+#define OPENFRAME_H
+
 #include <defs.h>
 
 #define SEED 0x1578015 // changing this seed would change the output of the random number generator of some thets 
@@ -411,3 +414,4 @@ void spi_mode(bool is_mode){
     }
 }
 
+#endif //OPENFRAME_H
