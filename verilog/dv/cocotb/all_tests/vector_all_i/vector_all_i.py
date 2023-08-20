@@ -7,10 +7,10 @@ from openframe import OpenFrame
 @cocotb.test()
 @report_test
 async def vector_all_i(dut):
-    caravelEnv = await test_configure(dut,timeout_cycles=128369)
+    caravelEnv = await test_configure(dut, timeout_cycles=128369)
     openframe = OpenFrame(caravelEnv)
     await openframe.wait_reg1(0xAA)
-    cocotb.log.info("finish configuring")
+    cocotb.log.info("[TEST] finish configuring")
     old_value = 0
     gpios_order = (16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 0, 43, 1, 6, 9, 8, 11 ,13 ,14 ,15 )
     drive_vector_by_order(caravelEnv, gpios_order, old_value)

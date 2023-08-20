@@ -20,3 +20,4 @@ from all_tests.irq.external2_irq.external2_irq import external2_irq
 from all_tests.irq.spi_master_irq.spi_master_irq import spi_master_irq
 from all_tests.irq.timer0_irq.timer0_irq import timer0_irq
 from all_tests.irq.timer1_irq.timer1_irq import timer1_irq
+from all_tests.temp.temp import temp

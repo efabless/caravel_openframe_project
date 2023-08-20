@@ -8,7 +8,7 @@ import random
 @cocotb.test()
 @report_test
 async def hk_wr_regs(dut):
-    caravelEnv = await test_configure(dut,timeout_cycles=188117)
+    caravelEnv = await test_configure(dut, timeout_cycles=188117)
     openframe = OpenFrame(caravelEnv)
     housekeeping_regs = HousekeepingRegs()
     spi_master = OpenFrameSPI(caravelEnv)
@@ -17,6 +17,8 @@ async def hk_wr_regs(dut):
 
     for address in housekeeping_regs.memory.keys():
         rand_val = random.randint(0, 255)
+        if housekeeping_regs.memory[address].name == "DLL enable":
+            rand_val = 0 # enable the DLL in GL simulation would introduce a combinational loop
         # write register through SPI
         await spi_master.write_reg_spi(address, rand_val)
         # write RAL model

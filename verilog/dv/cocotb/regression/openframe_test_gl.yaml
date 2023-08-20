@@ -1,0 +1,21 @@
+Tests: 
+    - {name: vector_all_o, sim: GL}
+    - {name: vector_all_i, sim: GL}
+    - {name: vector_all_i_pu, sim: GL}
+    - {name: vector_all_i_pd, sim: GL}
+    - {name: vector_all_i_0_1, sim: GL}
+    - {name: uart, sim: GL}
+    - {name: wr_rd_gpio_config, sim: GL}
+    # - {name: timer0, sim: GL}
+    # - {name: timer1, sim: GL}
+    # - {name: timer_chain, sim: GL}
+    - {name: spi_master, sim: GL}
+    - {name: hk_reset_val, sim: GL}
+    - {name: hk_wr_regs, sim: GL}
+    - {name: cpu_reset, sim: GL}
+    - {name: hk_spi_irq, sim: GL}
+    - {name: external1_irq, sim: GL}
+    - {name: external2_irq, sim: GL}
+    - {name: spi_master_irq, sim: GL}
+    - {name: timer0_irq, sim: GL}
+    - {name: timer1_irq, sim: GL}

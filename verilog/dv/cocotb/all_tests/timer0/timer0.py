@@ -11,14 +11,16 @@ import queue
 @report_test
 async def timer0(dut):
     caravelEnv = await test_configure(dut,timeout_cycles=1188117)
-    await caravelEnv.release_csb()
     openframe = OpenFrame(caravelEnv)
     gpios_order = (16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 0, 43, 2, 5, 4, 3, 10,7,12)
     await openframe.wait_reg1(0xAA) 
+    await caravelEnv.release_csb()
     # start monitor timer oneshot count down
     old_received = int(caravelEnv.monitor_discontinuous_gpios(gpios_order[::-1]),2)
+    cocotb.log.info(f"[TEST] old received {hex(old_received)}")
     while True:
         received = int(caravelEnv.monitor_discontinuous_gpios(gpios_order[::-1]),2)
+        cocotb.log.info(f"[TEST] received {hex(received)}")
         if received != old_received:
             if received > old_received and old_received != 0:
                 cocotb.log.error(f"[TEST] timer doesn't count down at oneshot count down config {hex(received)} > {hex(old_received)}")

@@ -8,11 +8,11 @@ from openframe import OpenFrame
 @report_test
 async def vector_all_i_0_1(dut):
     caravelEnv = await test_configure(dut,timeout_cycles=231605)
-    await caravelEnv.release_csb()
     gpios_order = (16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 0, 43, 2, 5, 4, 3, 10,7,12)
 
     openframe = OpenFrame(caravelEnv)
     await openframe.wait_reg2(0xAA)
+    await caravelEnv.release_csb()
     data_out = int(caravelEnv.monitor_discontinuous_gpios(gpios_order),2)
     if data_out != 0xAAAAAAA:
         cocotb.log.error(f"test failed excepted 0xAAAAAAA received {hex(data_out)}")
