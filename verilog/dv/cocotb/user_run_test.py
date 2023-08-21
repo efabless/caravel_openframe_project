@@ -39,6 +39,8 @@ class UserRunTest(RunTest):
             include_list = f"{self.paths.USER_PROJECT_ROOT}/verilog/includes/includes.rtl.caravel_user_project"
         elif self.test.sim == "GL":
             include_list = f"{self.paths.USER_PROJECT_ROOT}/verilog/includes/includes.gl.caravel_user_project"
+        elif self.test.sim == "GL_SDF":
+            include_list = f"{self.paths.USER_PROJECT_ROOT}/verilog/includes/includes.gl+sdf.caravel_user_project"
         includes_files = ""
         with open(include_list, "r") as f:
             for line in f:

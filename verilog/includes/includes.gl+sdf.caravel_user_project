@@ -1,0 +1,31 @@
+# Caravel user project includes
+-v $(CARAVEL_PATH)/rtl/defines.v
+-v $(USER_PROJECT_VERILOG)/rtl/user_defines.v	     
+-v $(USER_PROJECT_VERILOG)/dv/firmware/spiflash.v
+-v $(USER_PROJECT_VERILOG)/gl/digital_locked_loop.v
+# -v $(USER_PROJECT_VERILOG)/gl/openframe_project_wrapper.v
+-v $(USER_PROJECT_VERILOG)/gl/openframe_project_wrapper.global.pnl.v
+# -v $(USER_PROJECT_VERILOG)/gl/picosoc.v
+-v $(USER_PROJECT_VERILOG)/gl/picosoc.global.pnl.v
+-v $(USER_PROJECT_VERILOG)/gl/vccd1_connection.v
+-v $(USER_PROJECT_VERILOG)/gl/vssd1_connection.v
+
+# caravel_files 
+-v $(CARAVEL_PATH)/rtl/user_id_programming.v
+-v $(CARAVEL_PATH)/rtl/constant_block.v
+-v $(CARAVEL_PATH)/rtl/xres_buf.v
+-v $(CARAVEL_PATH)/rtl/simple_por.v
+-v $(CARAVEL_PATH)/rtl/pads.v
+-v $(CARAVEL_PATH)/rtl/chip_io_openframe.v
+-v $(CARAVEL_PATH)/rtl/caravel_openframe.v
+
+#PDK cells
+-v $(VERILOG_PATH)/cvc-pdk/sky130_ef_io.v
+-v $(VERILOG_PATH)/cvc-pdk/sky130_fd_io.v
+-v $(VERILOG_PATH)/cvc-pdk/primitives_hd.v
+-v $(VERILOG_PATH)/cvc-pdk/sky130_fd_sc_hd.v
+-v $(VERILOG_PATH)/cvc-pdk/primitives_hvl.v
+-v $(VERILOG_PATH)/cvc-pdk/sky130_fd_sc_hvl.v
+
+-v $(VERILOG_PATH)/cvc-pdk/sky130_sram_2kbyte_1rw1r_32x512_8.v
+
