@@ -3,8 +3,10 @@
 -v $(USER_PROJECT_VERILOG)/rtl/user_defines.v	     
 -v $(USER_PROJECT_VERILOG)/dv/firmware/spiflash.v
 -v $(USER_PROJECT_VERILOG)/gl/digital_locked_loop.v
--v $(USER_PROJECT_VERILOG)/gl/openframe_project_wrapper.v
--v $(USER_PROJECT_VERILOG)/gl/picosoc.v
+# -v $(USER_PROJECT_VERILOG)/gl/openframe_project_wrapper.v
+-v $(USER_PROJECT_VERILOG)/gl/openframe_project_wrapper.global.pnl.v
+# -v $(USER_PROJECT_VERILOG)/gl/picosoc.v
+-v $(USER_PROJECT_VERILOG)/gl/picosoc.global.pnl.v
 -v $(USER_PROJECT_VERILOG)/gl/vccd1_connection.v
 -v $(USER_PROJECT_VERILOG)/gl/vssd1_connection.v
 
