@@ -31,6 +31,12 @@ void main(){
     set_debug_reg2(val);
     uart_clkdiv(val);
     set_debug_reg1(0xAA);
+    set_debug_reg1(0x0);
+    print("@& \n"); // send Hello with the new clk divider
+    val = get_uart_clkdiv();
+    set_debug_reg2(val);
+    uart_clkdiv(val);
+    set_debug_reg1(0xAA);
 }
 
 int get_uart_clkdiv(){

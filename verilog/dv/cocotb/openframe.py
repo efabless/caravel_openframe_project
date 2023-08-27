@@ -4,6 +4,7 @@ from caravel_cocotb.caravel_interfaces import UART
 from caravel_cocotb.caravel_interfaces import SPI
 from models.cpu_model.cpu_model import CPU_Model
 from models.flash_spi_model.flash_spi_model import FlashSPI_Model
+from models.uart_model.uart_model import UART_Model
 
 class OpenFrame:
     def __init__(self, caravelEnv):
@@ -18,6 +19,9 @@ class OpenFrame:
             self.debug_reg2_hdl = [openframe_example_hdl._id(f"\debug_regs.debug_reg_2[{i}] ", False) for i in range(32)]
         if "GL" not in cocotb.plusargs:
             self.cpu = CPU_Model(openframe_example_hdl)
+            self.uart = UART_Model(self.caravelEnv)
+            cocotb.plusargs["COVERAGE_COLLECT"] = True
+
         # FlashSPI_Model(caravelEnv.dut)
 
     async def wait_reg1(self, data):
