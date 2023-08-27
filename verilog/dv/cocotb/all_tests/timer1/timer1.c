@@ -24,20 +24,20 @@ void main(){
     GPIO_Configure(43, GPIO_MODE_VECTOR_OUTPUT);
     set_debug_reg1(0xAA);
     // timer one shot
-   timer0_oneshot_config(0,0x5FFF);
-   monitor_timer0_until(0xA1);
-   timer0_oneshot_config(1,0x5FFF);
-   monitor_timer0_until(0xA2);
-   timer0_periodic_config(0,0x2FFF);
-   monitor_timer0_until(0xA3);
-   timer0_periodic_config(1,0x2FFF);
-   monitor_timer0_until(0xA4);
+   timer1_oneshot_config(0,0x5FFF);
+   monitor_timer1_until(0xA1);
+   timer1_oneshot_config(1,0x5FFF);
+   monitor_timer1_until(0xA2);
+   timer1_periodic_config(0,0x2FFF);
+   monitor_timer1_until(0xA3);
+   timer1_periodic_config(1,0x2FFF);
+   monitor_timer1_until(0xA4);
 }
 
-void monitor_timer0_until(int stop_code){
+void monitor_timer1_until(int stop_code){
     while (get_debug_reg2() != stop_code){
-    int val = timer0_get_data();
-    set_debug_reg1(val);
-    GPIO_Set(val);
+        int val = timer1_get_data();
+        set_debug_reg1(val);
+        GPIO_Set(val);
     }
 }

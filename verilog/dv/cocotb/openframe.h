@@ -275,16 +275,13 @@ void timer0_upcount(bool is_upcount){
         reg_timer0_config &= 0xFFFFFFFB;
     }
 }
-void timer0_data(int data){
-    reg_timer0_data = data;
+void timer0_val(int data){
+    reg_timer0_value = data;
 }
 int timer0_get_data(){
     return reg_timer0_data;
 }
 
-void timer0_periodic_val(int data){
-    reg_timer0_value = data;
-}
 
 void timer0_chain(bool is_chained){
     if (is_chained){
@@ -297,18 +294,14 @@ void timer0_oneshot_config(bool is_upcount, int data){
     timer0_enable(0);
     timer0_oneshot(1);
     timer0_upcount(is_upcount);
-    if (is_upcount){
-        timer0_periodic_val(data);
-    }else{
-        timer0_data(data);
-    }
+    timer0_val(data);
     timer0_enable(1);
 }
 void timer0_periodic_config(bool is_upcount, int data){
     timer0_enable(0);
     timer0_oneshot(0);
     timer0_upcount(is_upcount);
-    timer0_periodic_val(data);
+    timer0_val(data);
     timer0_enable(1);
 }       
 
@@ -344,31 +337,25 @@ void timer1_upcount(bool is_upcount){
         reg_timer1_config &= 0xFFFFFFFB;
     }
 }
-void timer1_data(int data){
-    reg_timer1_data = data;
-}
-int timer1_get_val(){
-    return reg_timer1_value;
-}
-void timer1_periodic_val(int data){
+void timer1_val(int data){
     reg_timer1_value = data;
 }
+int timer1_get_data(){
+    return reg_timer1_data;
+}
+
 void timer1_oneshot_config(bool is_upcount, int data){
     timer1_enable(0);
     timer1_oneshot(1);
     timer1_upcount(is_upcount);
-    if (is_upcount){
-        timer1_periodic_val(data);
-    }else{
-        timer1_data(data);
-    }
+    timer1_val(data);
     timer1_enable(1);
 }
 void timer1_periodic_config(bool is_upcount, int data){
     timer1_enable(0);
     timer1_oneshot(0);
     timer1_upcount(is_upcount);
-    timer1_data(data);
+    timer1_val(data);
     timer1_enable(1);
 }
 void timer1_chain(bool is_chained){
