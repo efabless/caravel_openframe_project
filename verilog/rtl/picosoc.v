@@ -133,7 +133,7 @@ module picosoc (
 
     /* PicoRV32 configuration */
     parameter [31:0] STACKADDR = (4*(`MEM_WORDS));       // end of memory
-    parameter [31:0] PROGADDR_RESET = 32'h 1000_0000;
+    parameter [31:0] PROGADDR_RESET = 32'h 1000_0000; 
     parameter [31:0] PROGADDR_IRQ   = 32'h 1000_0010;
 
     // Wishbone base addresses
