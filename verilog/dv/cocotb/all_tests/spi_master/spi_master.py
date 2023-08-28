@@ -24,7 +24,7 @@ async def spi_master(dut):
 
     # make spi_slave with different configurations
     first_slave.kill()
-    spi_slave = SPISlave(miso=dut.gpio10, mosi=dut.gpio11_monitor, sclk=dut.gpio9_monitor, cs=dut.gpio8_monitor, cs_inverted=1, mlb=1,mode=1)
+    spi_slave = SPISlave(miso=dut.gpio10, mosi=dut.gpio11_monitor, sclk=dut.gpio9_monitor, cs=dut.gpio8_monitor, cs_inverted=1, mlb=1,mode=0)
     second_slave = await cocotb.start(spi_slave.start())    
     await openframe.wait_any_change_reg2()
     if openframe.read_debug_reg2() == 0xE1:

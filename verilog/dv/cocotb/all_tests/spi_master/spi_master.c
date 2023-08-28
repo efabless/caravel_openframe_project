@@ -64,15 +64,13 @@ void main(){
     spi_enable(0);
     spi_mlb(1);
     spi_invCSB(1);
-    spi_mode(1);
+    // spi_mode(1); // uncomment after fix issue https://github.com/RTimothyEdwards/caravel_openframe_project/issues/7
 
     spi_stream(0);
     spi_enable(0);
 
     spi_stream(1);
     spi_enable(1);
-    spi_stream(0);
-    spi_enable(0);
     address = xorshift8(&state);
     data = xorshift8(&state);
     spi_write(0x02);
